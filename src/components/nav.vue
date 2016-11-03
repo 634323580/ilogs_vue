@@ -1,6 +1,6 @@
 <template>
-  <div class="navbar">
-      <p style="font-size:20px;">{{message}}通信</p>
+  <div class="navbar" @click='eventpreventDefault($event)'>
+      <!--<p style="font-size:20px;">{{message}}通信</p>-->
     <div class="dropdown">
             <router-link to="/home"><i class="iconfont">&#xe622;</i>首页</router-link>
             <router-link to="/article"><i class="iconfont">&#xe634;</i>专题</router-link>
@@ -40,6 +40,11 @@ export default{
             night_sw:false
         }
     },
+    created:function(){
+        Bus.$on('event:nightdaySw',text =>{
+            this.display = text;
+        })
+    },
     methods:{
         render:function(){
             this.display = !this.display;
@@ -53,6 +58,9 @@ export default{
             this.day_sw = false;
             this.night_sw = true;
             Bus.$emit('event:nightday', true);
+        },
+        eventpreventDefault:function(e){
+            e.stopPropagation();
         }
     }
 }
@@ -66,6 +74,7 @@ export default{
         height: 100%;
         background: #2a2a2a;
         width:170px;
+        z-index:2;
         a{
             padding: 10px;
             display: block;
@@ -80,7 +89,7 @@ export default{
     .dropdown a{
         text-shadow: 0 1px 0 black;
     }
-#app.readerNightMode{
+#app{
         a{
         &.router-link-active{
             text-shadow: 0 1px 0 #de533a;

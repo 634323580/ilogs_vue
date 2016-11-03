@@ -5,11 +5,13 @@
 
     <!--左侧边栏-->
     <navbar message="hello!"></navbar>
+    <asides></asides>
   </div>
 </template>
-
+ 
 <script>
 import navbar from './nav'
+import asides from './aside'
 export default {
   name: 'hello',
   data () {
@@ -18,7 +20,8 @@ export default {
     }
   },
   components: {
-    navbar
+    navbar,
+    asides
   }
 }
 </script>
