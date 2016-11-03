@@ -20,7 +20,7 @@ const router = new VueRouter({
 	scrollBehavior: function (to, from, savedPosition) {
   return savedPosition || { x: 0, y: 0 }
   },
-	linkActiveClass:'nav-active' //全局设置连接匹配时的类名 参考http://vuejs.github.io/vue-router/en/link.html
+	// linkActiveClass:'nav-active' //全局设置连接匹配时的类名 参考http://vuejs.github.io/vue-router/en/link.html
 })
 
 /* eslint-disable no-new */

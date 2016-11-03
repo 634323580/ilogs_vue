@@ -92,7 +92,6 @@ a{
 }
 .btn-success {
     color: white;
-    border-color: #49be38;
     background: #49be38;
 }
 .btn-success:hover, .btn-success:focus {

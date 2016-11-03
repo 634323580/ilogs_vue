@@ -23,8 +23,8 @@ export default {
     right: 0;
     bottom: 0;
     left: 170px;
-    width:25%;
-     z-index:1;
+    width: 25%;
+    z-index: 1;
   .cover-img {
       position: absolute;
       top: 0;
