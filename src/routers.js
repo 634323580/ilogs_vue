@@ -33,28 +33,28 @@
 
 // };
 import VueRouter from 'vue-router'
-import home from './components/home.vue'
-import error404 from './components/404.vue'
-import article from './components/ArticleContent.vue'
+import Home from './components/home.vue'
+import Error404 from './components/404.vue'
+import Article from './components/articleList.vue'
 var router = new VueRouter({
   routes: [
     {
        path: '/',
        name:'index',
-       component: home 
+       component: Home 
     },
     {
        path: '/home',
        name:'home',
-       component: home 
+       component: Home 
     },
     {
       path: '/article',
-      component:article
+      component:Article
     },
     {
        path: '/*', 
-       component: error404 
+       component: Error404 
     },
     {
       path: '/',

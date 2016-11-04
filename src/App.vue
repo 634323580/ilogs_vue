@@ -1,22 +1,30 @@
 <template>
-  <div id="app" v-bind:class='{readerNightMode : nightday}' @click='eventSw()'>
+  <div id="app" v-bind:class='{readerNightMode : nightday,readerFont : fontType}' @click='eventSw()'>
     <router-view class="ui-view" keep-alive></router-view>
   </div>
 </template>
 
 <script>
 import Bus from './bus.js';
+import Store from './Store.js';
 export default {
   name: 'app',
   data(){
     return {
-      nightday:false
+      nightday:Store.storeGet('nightday'),
+      fontType:Store.storeGet('fontType')
     }
   },
   created:function(){
     Bus.$on('event:nightday',text =>{
       this.nightday = text;
+      Store.storeSet('nightday',text);
     })
+    Bus.$on('event:fontFamily',text =>{
+      this.fontType = text;
+      Store.storeSet('fontType',text);
+    })
+
   },
   methods:{
     eventSw:function(){
@@ -29,21 +37,29 @@ export default {
 }
 </script>
 
-<style>
+<style lang='scss'>
 *{
   margin:0;
   padding:0;
 }
+li{
+  list-style:none;
+}
 a{
   text-decoration: none;
 }
+.clearfix::after{
+  content:'';
+  display:table;
+  clear:both;
+}
 @font-face {
   font-family: 'iconfont';  /* project id："173634" */
-  src: url('//at.alicdn.com/t/font_7izi48esdsll3di.eot');
-  src: url('//at.alicdn.com/t/font_7izi48esdsll3di.eot') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_7izi48esdsll3di.woff') format('woff'),
-  url('//at.alicdn.com/t/font_7izi48esdsll3di.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_7izi48esdsll3di.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_km8d3uknyh2awcdi.eot');
+  src: url('//at.alicdn.com/t/font_km8d3uknyh2awcdi.eot') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_km8d3uknyh2awcdi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_km8d3uknyh2awcdi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_km8d3uknyh2awcdi.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family:"iconfont" !important;
@@ -54,19 +70,26 @@ a{
   -moz-osx-font-smoothing: grayscale;
 }
 #app {
-  font: 14px/1.4286 arial,"Microsoft Yahei";
+  font: 14px/1.4286 arial;
   font-size: 14px;
   line-height: 20px;
   color: #555555;
   position: absolute;
   width:100%;
-  height:100%;
+  min-height:100%;
+  &.readerFont{
+    font: 14px/1.4286 '黑体';
+    .bottom-block{
+      font-family:'黑体';
+    }
+  }
 }
+
 #app.readerNightMode{
   background:#3f3f3f;
 
 }
-#app.readerNightMode a, #app.readerNightMode .btn{
+#app.readerNightMode a, #app.readerNightMode .btn, #app.readerNightMode .time{
       color: #b1b1b1;
 }
 #app.readerNightMode .btn{
@@ -101,5 +124,17 @@ a{
 }
 p {
     margin: 0 0 10px;
+}
+.ui-view{
+  height:100%;
+}
+.blue-link {
+    color: #4094c7;
+}
+.blue-link:hover {
+    color: #075b8d;
+}
+a:hover, a:focus {
+    color: black;
 }
 </style>

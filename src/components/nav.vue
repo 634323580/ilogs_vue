@@ -12,12 +12,12 @@
     </div>
 <div id="view-mode-modal" class="read-modal" v-show='display'>
     <div class="btn-group change-background dayNight">
-          <span @click='day()' class="day" v-bind:class='{active : day_sw}'><i class="iconfont">&#xe690;</i></span>
-          <span  @click='night()' class="night" v-bind:class='{active : night_sw}'><i class="iconfont">&#xe6cf;</i></span>
+          <span @click='dayAndnight(true,false,false)' class="day" v-bind:class='{active : day_sw}'><i class="iconfont">&#xe690;</i></span>
+          <span  @click='dayAndnight(false,true,true)' class="night" v-bind:class='{active : night_sw}'><i class="iconfont">&#xe6cf;</i></span>
     </div>
     <div class="btn-group change-background">
-          <span class="active">宋体</span>
-          <span>黑体</span>
+          <span @click='font(true,false,false)' v-bind:class='{active :arial }'>宋体</span>
+          <span @click='font(false,true,true)' v-bind:class='{active :blackbody }' >黑体</span>
     </div>
     <div class="btn-group change-background">
           <span class="active">简体</span>
@@ -30,14 +30,16 @@
 
 <script>
 import Bus from '../bus.js';
-
+import Store from '../Store.js';
 export default{
     props: ['message'],
     data(){
         return {
             display:false,
-            day_sw:true,
-            night_sw:false
+            day_sw:Store.storeGet('day_sw'),
+            night_sw:Store.storeGet('night_sw'),
+            arial:Store.storeGet('arial'),
+            blackbody:Store.storeGet('blackbody')
         }
     },
     created:function(){
@@ -49,15 +51,19 @@ export default{
         render:function(){
             this.display = !this.display;
         },
-        day:function(){
-            this.day_sw = true;
-            this.night_sw = false;
-            Bus.$emit('event:nightday', false);
+        dayAndnight:function(day,night,nightday){
+            this.day_sw = day;
+            this.night_sw = night;
+            Bus.$emit('event:nightday', nightday);
+            Store.storeSet('day_sw',day);
+            Store.storeSet('night_sw',night);
         },
-        night:function(){
-            this.day_sw = false;
-            this.night_sw = true;
-            Bus.$emit('event:nightday', true);
+        font:function(font_arial,font_blackbody,font_tpye){
+            this.arial = font_arial;
+            this.blackbody = font_blackbody;
+            Store.storeSet('arial',font_arial);
+            Store.storeSet('blackbody',font_blackbody);
+            Bus.$emit('event:fontFamily',font_tpye);
         },
         eventpreventDefault:function(e){
             e.stopPropagation();

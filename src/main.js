@@ -7,11 +7,7 @@ import Resource from 'vue-resource'
 import myRouter from './routers'
 Vue.use(Resource);
 // 设置默认请求地址
-Vue.http.options.root = 'https://api.douban.com/v2/';
-
-
-
-
+Vue.http.options.root = 'http://104.238.140.37:9000';
 Vue.use(VueRouter)
 const router = new VueRouter({
 	//abstract:true,

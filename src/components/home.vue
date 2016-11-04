@@ -1,17 +1,21 @@
 <template>
   <div class="hello">
-      <router-link to="/404">404</router-link>
-      <h2>213</h2>
+      <!--<router-link to="/404">404</router-link>
+      <h2>213</h2>-->
 
     <!--左侧边栏-->
-    <navbar message="hello!"></navbar>
-    <asides></asides>
+    <Navbar message="hello!"></Navbar>
+    <!--左侧大图-->
+    <Asides></Asides>
+    <!--右侧列表-->
+    <Articlelist></Articlelist>
   </div>
 </template>
  
 <script>
-import navbar from './nav'
-import asides from './aside'
+import Navbar from './nav'
+import Asides from './aside'
+import Articlelist from './articleList'
 export default {
   name: 'hello',
   data () {
@@ -20,8 +24,9 @@ export default {
     }
   },
   components: {
-    navbar,
-    asides
+    Navbar,
+    Asides,
+    Articlelist
   }
 }
 </script>
