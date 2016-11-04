@@ -96,12 +96,22 @@ export default{
         text-shadow: 0 1px 0 black;
     }
 #app{
-        a{
+    .dropdown a{
         &.router-link-active{
             text-shadow: 0 1px 0 #de533a;
             background-color: #e78170;
             color: white;
             text-shadow: 0 1px 0 #de533a;
+        }
+        &:hover{
+            text-shadow: 0 1px 0 #de533a;
+            background:#f49484;
+            color: white;
+        }
+        &:active{
+            text-shadow: 0 0 0 #de533a;
+            background:#b34129;
+            color: white;
         }
     }
 }

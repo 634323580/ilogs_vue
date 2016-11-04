@@ -1,6 +1,6 @@
 <template>
   <div id="app" v-bind:class='{readerNightMode : nightday,readerFont : fontType}' @click='eventSw()'>
-    <router-view class="ui-view" keep-alive></router-view>
+    <router-view class="ui-view app-ui-view" keep-alive></router-view>
   </div>
 </template>
 
@@ -125,7 +125,7 @@ a{
 p {
     margin: 0 0 10px;
 }
-.ui-view{
+.app-ui-view{
   height:100%;
 }
 .blue-link {

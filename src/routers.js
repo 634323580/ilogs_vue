@@ -46,7 +46,15 @@ var router = new VueRouter({
     {
        path: '/home',
        name:'home',
-       component: Home 
+       component: Home,
+       children: [
+        {
+          // 当 /user/:id/profile 匹配成功，
+          // UserProfile 会被渲染在 User 的 <router-view> 中
+          path: 'profile',
+          component: Error404
+        },
+       ]
     },
     {
       path: '/article',

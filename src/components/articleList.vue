@@ -2,7 +2,7 @@
   <div class="articleList">
       <div class="page-title">
         <ul class="clearfix">
-            <li class="active"><a>发现</a></li>
+            <li class="active"><router-link to="/home/profile">发现</router-link></li>
             <li><a>2015精选</a></li>
             <li class="search">
               <input type="text" placeholder="搜索">
@@ -27,6 +27,8 @@
             <li><a>简书出版</a></li>
             <li><a>简书播客</a></li>
         </ul>
+            <router-view class="ui-view app-ui-view" keep-alive></router-view>
+
         <ul class="article-list thumbnails">
           <li v-for='item in items'>
             <a class="wrap-img"><img v-bind:src="item.author.avatar"></a>
