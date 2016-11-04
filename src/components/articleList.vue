@@ -2,7 +2,7 @@
   <div class="articleList">
       <div class="page-title">
         <ul class="clearfix">
-            <li class="active"><router-link to="/home/profile">发现</router-link></li>
+            <router-link to="/home" active-class="active" tag="li"><a>发现</a></router-link>
             <li><a>2015精选</a></li>
             <li class="search">
               <input type="text" placeholder="搜索">
@@ -97,7 +97,7 @@ export default {
             border-radius:15px;
             outline: none;
             box-sizing:border-box;
-            text-indent:10px;
+            padding:0 25px 0 10px;
             font-size:14px;
             &:focus{
               border-color:#12b7f5;
