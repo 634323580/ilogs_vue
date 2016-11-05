@@ -1,6 +1,5 @@
 <template>
   <div class="navbar" @click='eventpreventDefault($event)'>
-      <!--<p style="font-size:20px;">{{message}}通信</p>-->
     <div class="dropdown">
             <router-link to="/home"><i class="iconfont">&#xe622;</i>首页</router-link>
             <router-link to="/article"><i class="iconfont">&#xe634;</i>专题</router-link>

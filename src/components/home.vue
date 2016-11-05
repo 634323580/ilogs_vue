@@ -1,13 +1,10 @@
 <template>
   <div class="hello">
-      <!--<router-link to="/404">404</router-link>
-      <h2>213</h2>-->
-
-    <!--左侧边栏-->
+    
     <Navbar message="hello!"></Navbar>
-    <!--左侧大图-->
+
     <Asides></Asides>
-    <!--右侧列表-->
+
     <Articlelist></Articlelist>
   </div>
 </template>
