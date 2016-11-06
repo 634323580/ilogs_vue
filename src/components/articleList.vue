@@ -3,9 +3,9 @@
       <div class="page-title">
         <ul class="clearfix">
             <router-link to="/home" active-class="active" tag="li"><a>发现</a></router-link>
-            <li><a>2015精选</a></li>
+            <router-link to="/home/profile" active-class="active" tag="li"><a>2015精选发现</a></router-link>
             <li class="search">
-              <input type="text" placeholder="搜索">
+              <input type="text" placeholder="搜索" v-model="searchVal" @keyup.enter="search">
               <i class="iconfont">&#xe62b;</i>
             </li>
         </ul>
@@ -48,24 +48,56 @@
 
 <script>
 import navbar from './nav'
+import Request from '../request.js'
 export default {
   data(){
     return {
-      items:[]
+      items:[],
+      searchVal:''
     }
   },
   created:function(){
-    this.$http.get('post').then(response => {
+    // this.$http.get('post',{
+    //   params:{
+    //     limit:10
+    //   }
+    // }).then(response => {
 
-      this.$nextTick(function () {
-          // 保证 this.$el 已经插入文档
-          console.log(response.body.data)
-          this.items = response.body.data;
-        })
-    },response => {
+    //   this.$nextTick(function () {
+    //       // 保证 this.$el 已经插入文档
+    //       let res = response;
+    //       console.log(res.body.data)
+    //       this.items = res.body.data;
+    //     })
+    // },response => {
 
+    // })
+    Request.get(this,'post',{}).then(res => {
+          this.items = res.body.data;
     })
   },
+  methods:{
+    search:function(){
+      // alert(this.searchVal)
+      if(this.searchVal === ''){
+        Request.get(this,'post',{limit:10}).then(res => {
+              this.items = res.body.data;
+        })
+      }else{
+        Request.get(this,'post',{title:this.searchVal,limit:10}).then(res => {
+              this.items = res.body.data;
+        })
+      }
+
+    }
+  },
+    watch: {
+    '$route' (to, from) {
+      // react to route changes...
+      console.log(to)
+      console.log(from)
+    }
+  }
 }
 </script>
 

@@ -1,15 +1,15 @@
 <template>
-  <div class="navbar" @click='eventpreventDefault($event)'>
+  <div class="navbar">
     <div class="dropdown">
             <router-link to="/home"><i class="iconfont">&#xe622;</i>首页</router-link>
             <router-link to="/article"><i class="iconfont">&#xe634;</i>专题</router-link>
         </ul>
     </div>
     <div class="nav-user">
-        <a @click="render()"><i class="iconfont">&#xe74b;</i>显示模式</a>
+        <a @click="render($event)"><i class="iconfont">&#xe74b;</i>显示模式</a>
         <a><i class="iconfont">&#xe607;</i>登录</a>
     </div>
-<div id="view-mode-modal" class="read-modal" v-show='display'>
+<div id="view-mode-modal" class="read-modal" v-show='display' @click='eventpreventDefault($event)'>
     <div class="btn-group change-background dayNight">
           <span @click='dayAndnight(true,false,false)' class="day" v-bind:class='{active : day_sw}'><i class="iconfont">&#xe690;</i></span>
           <span  @click='dayAndnight(false,true,true)' class="night" v-bind:class='{active : night_sw}'><i class="iconfont">&#xe6cf;</i></span>
@@ -47,7 +47,8 @@ export default{
         })
     },
     methods:{
-        render:function(){
+        render:function(e){
+            e.stopPropagation();
             this.display = !this.display;
         },
         dayAndnight:function(day,night,nightday){

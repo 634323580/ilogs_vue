@@ -9,6 +9,13 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+    watch: {
+    '$route' (to, from) {
+      // react to route changes...
+      console.log(to)
+      console.log(from)
+    }
   }
 }
 </script>

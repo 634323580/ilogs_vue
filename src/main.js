@@ -9,6 +9,24 @@ Vue.use(Resource);
 // 设置默认请求地址
 Vue.http.options.root = 'http://104.238.140.37:9000';
 Vue.use(VueRouter)
+let intercept = 0;
+Vue.http.interceptors.push((request, next) => {
+  intercept++
+  // modify request ...
+    console.log(intercept)
+
+  // stop and return response
+  next(response => {
+    response.sb = '111'
+    intercept--
+    console.log(intercept)
+    if(intercept == 0){
+      
+    }
+  })
+});
+
+
 const router = new VueRouter({
 	//abstract:true,
 	//地址栏不会有变化
