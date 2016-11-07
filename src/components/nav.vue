@@ -2,7 +2,7 @@
   <div class="navbar">
     <div class="dropdown">
             <router-link to="/home"><i class="iconfont">&#xe622;</i>首页</router-link>
-            <router-link to="/article"><i class="iconfont">&#xe634;</i>专题</router-link>
+            <router-link to="/articlecon"><i class="iconfont">&#xe634;</i>专题</router-link>
         </ul>
     </div>
     <div class="nav-user">

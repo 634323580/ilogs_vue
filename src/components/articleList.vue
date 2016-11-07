@@ -12,8 +12,10 @@
       </div>
       <div id="list-container">
         <ul class="unstyled clearfix sort-nav">
-            <li class="active"><a>精选</a></li>
-            <li><a>时事热闻</a></li>
+            <router-link to='/home' tag='li' active-class="active"><a>全部</a></router-link>
+            <!--<li v-for='item in category' v-on:click='categorys(item,item._id)'><a>{{item.name}}</a></li>-->
+            <router-link v-for='item in category' :to="{name:'category',params:{categoryId:item._id }}" active-class="active" tag="li" ><a>{{item.name}}</a></router-link>
+            <!--<li><a>时事热闻</a></li>
             <li><a>小说精选</a></li>
             <li><a>拍摄游记</a></li>
             <li><a>漫画手绘</a></li>
@@ -25,15 +27,18 @@
             <li><a>专题精选</a></li>
             <li><a>有奖活动</a></li>
             <li><a>简书出版</a></li>
-            <li><a>简书播客</a></li>
+            <li><a>简书播客</a></li>-->
         </ul>
             <router-view class="ui-view app-ui-view" keep-alive></router-view>
 
         <ul class="article-list thumbnails">
           <li v-for='item in items'>
-            <a class="wrap-img"><img v-bind:src="item.author.avatar"></a>
-            <p class="list-top"><a class="blue-link">{{item.author.name}}</a><em>·</em><span class="time">大约22小时之前</span></p>
-            <h4 class="title"><a>{{item.title}}</a></h4>
+            <a class="wrap-img"><img v-bind:src="item.author.avatar"></a> 
+            <p class="list-top"><a class="blue-link">{{item.author.name}}</a><em>·</em><span class="time">{{item.create_at}}</span></p>
+            <h4 class="title">
+              {{item.id}}
+            <router-link :to="{name:'listcon', params: { articleId: item._id }}" active-class="active">{{item.title}}{{item.dataActive}}</router-link>
+              </h4>
             <div class="list-footer">
               <a>阅读 3148</a>
               <a>· 评论 34</a>
@@ -47,13 +52,17 @@
 </template>
 
 <script>
-import navbar from './nav'
 import Request from '../request.js'
 export default {
+  props:['mag'],
   data(){
     return {
       items:[],
-      searchVal:''
+      category:[],
+      searchVal:'',
+      objs:{
+        'sb':1
+      }
     }
   },
   created:function(){
@@ -72,9 +81,26 @@ export default {
     // },response => {
 
     // })
-    Request.get(this,'post',{}).then(res => {
-          this.items = res.body.data;
+
+    if(this.$route.params.categoryId === undefined){
+      Request.get(this,'post',{}).then(res => {
+            this.items = res.body.data;
+            console.log( res.body.data)
+      })
+    }else{
+      Request.get(this,'post',{
+        category:this.$route.params.categoryId
+      }).then(res => {
+            this.items = res.body.data;
+      })
+    }
+
+
+    Request.get(this,'category').then(res => {
+      this.category = res.body.data;
     })
+
+
   },
   methods:{
     search:function(){
@@ -89,15 +115,25 @@ export default {
         })
       }
 
+    },
+    categorys:function(someObject ,id){
+      Request.get(this,'post',{
+        'category':id
+      }).then(res => {
+          this.items = res.body.data;
+      })
     }
   },
     watch: {
-    '$route' (to, from) {
-      // react to route changes...
-      console.log(to)
-      console.log(from)
+      'mag':function(){
+        //console.log(oldval)
+        Request.get(this,'post',{
+          category:this.mag
+        }).then(res => {
+              this.items = res.body.data;
+        })
+      }
     }
-  }
 }
 </script>
 

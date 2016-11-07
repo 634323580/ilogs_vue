@@ -13,13 +13,13 @@ let intercept = 0;
 Vue.http.interceptors.push((request, next) => {
   intercept++
   // modify request ...
-    console.log(intercept)
+    // console.log(intercept)
 
   // stop and return response
   next(response => {
     response.sb = '111'
     intercept--
-    console.log(intercept)
+    // console.log(intercept)
     if(intercept == 0){
       
     }

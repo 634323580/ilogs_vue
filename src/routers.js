@@ -36,6 +36,8 @@ import VueRouter from 'vue-router'
 import Home from './components/home.vue'
 import Error404 from './components/404.vue'
 import Article from './components/articleList.vue'
+import ArticleContent from './components/articleContent.vue'
+import Category from './components/category.vue'
 var router = new VueRouter({
   routes: [
     {
@@ -57,8 +59,14 @@ var router = new VueRouter({
        ]
     },
     {
-      path: '/article',
-      component:Article
+      path: '/articlecon/:articleId',
+      name:'listcon',
+      component:ArticleContent
+    },
+    {
+      path: '/category/:categoryId',
+      name:'category',
+      component:Category
     },
     {
        path: '/*', 

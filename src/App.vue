@@ -47,6 +47,7 @@ li{
 }
 a{
   text-decoration: none;
+  color:#555;
 }
 .clearfix::after{
   content:'';
@@ -87,7 +88,15 @@ a{
 
 #app.readerNightMode{
   background:#3f3f3f;
-
+  .markdown-body{color:#999999;}
+  .highlight pre, .markdown-body pre{
+    background:#2a2a2a;
+  }
+  .markdown-body{
+    hr{background:#2f2f2f;}
+    h1,h2,h3,h4,h5{border-color:#2f2f2f;}
+  }
+  .author-info{border-color:#2f2f2f;}
 }
 #app.readerNightMode a, #app.readerNightMode .btn, #app.readerNightMode .time{
       color: #b1b1b1;
@@ -137,4 +146,10 @@ p {
 a:hover, a:focus {
     color: black;
 }
+
+
+
+
+
+
 </style>
