@@ -24,7 +24,7 @@
         height:30px;
         border-radius:50%;
         border-width:3px;
-        border-color:#ececec;
+        border-color:#3c3c3c;
         border-left-color:transparent;
         border-style:solid;
         position:fixed;
@@ -34,5 +34,10 @@
         margin-top: -15px;
         margin-left: -15px;
         animation:load 1s linear infinite ;
+    }
+    #app.readerNightMode{
+        .loading{
+            border-color:#ececec;
+        }
     }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="app" v-bind:class='{readerNightMode : nightday,readerFont : fontType}' @click='eventSw()'>
     <router-view class="ui-view app-ui-view" keep-alive></router-view>
-    <Loading v-show="loading.show"></Loading>
+    <Loading v-if="loading.show"></Loading>
   </div>
 </template>
 
