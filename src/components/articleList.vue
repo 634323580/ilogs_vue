@@ -189,17 +189,12 @@ export default {
         }
       }
     }
-
-    .article-list{
-      &>li{
+     .list-itme{
         border-color:#2f2f2f;
+        .wrap-img img{
+          border-color:#2f2f2f;
+        }
       }
-      .wrap-img img{
-        border-color:#2f2f2f;
-      }
-    }
-
-
   }
  #app.readerFont{
   .title{

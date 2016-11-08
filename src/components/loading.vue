@@ -38,6 +38,7 @@
     #app.readerNightMode{
         .loading{
             border-color:#ececec;
+            border-left-color:transparent;
         }
     }
 </style>
