@@ -1,21 +1,28 @@
 <template>
   <div id="app" v-bind:class='{readerNightMode : nightday,readerFont : fontType}' @click='eventSw()'>
     <router-view class="ui-view app-ui-view" keep-alive></router-view>
+    <Loading v-show="loading.show"></Loading>
   </div>
 </template>
 
 <script>
 import Bus from './bus.js';
 import Store from './Store.js';
+import Loading from './components/loading'
+
 export default {
   name: 'app',
   data(){
     return {
       nightday:Store.storeGet('nightday'),
-      fontType:Store.storeGet('fontType')
+      fontType:Store.storeGet('fontType'),
+      loading:{
+        show:true
+      }
     }
   },
   created:function(){
+    console.log('11');
     Bus.$on('event:nightday',text =>{
       this.nightday = text;
       Store.storeSet('nightday',text);
@@ -25,6 +32,14 @@ export default {
       Store.storeSet('fontType',text);
     })
 
+    Bus.$on('loading',text =>{
+      this.loading.show = text;
+    })
+
+  },
+  beforeUpdate:function(){
+    // this.loading.show = true
+    // console.log(1234556)
   },
   methods:{
     eventSw:function(){
@@ -32,7 +47,7 @@ export default {
     }
   },
   components: {
-
+    Loading
   }
 }
 </script>

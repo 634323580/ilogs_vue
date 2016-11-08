@@ -15,11 +15,13 @@
     export default{
         data(){
             return {
-                items:[]
+                items:[],
+                searchVal:''
             }
         },
         created:function(){
             Bus.$on('search',text => {
+                this.searchVal = text;
                 if(Boolean(text)){
                     Request.get(this,'post',{
                         category:this.$route.params.categoryId,
@@ -30,7 +32,6 @@
                 }else{
                     this.requestList();
                 }
-
             })
         },
         mounted:function(){
@@ -40,11 +41,21 @@
         },
         methods:{
             requestList:function(){
-                Request.get(this,'post',{
-                    category:this.$route.params.categoryId
-                }).then(res => {
-                    this.items = res.body.data;
-                })
+                if(Boolean(this.searchVal)){
+                    Request.get(this,'post',{
+                        title:this.searchVal,
+                        category:this.$route.params.categoryId
+                    }).then(res => {
+                        this.items = res.body.data;
+                    })
+                }else{
+                    Request.get(this,'post',{
+                        category:this.$route.params.categoryId
+                    }).then(res => {
+                        this.items = res.body.data;
+                    })
+                }
+
             }
         },
         watch:{

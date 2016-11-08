@@ -5,6 +5,7 @@ import App from './App'
 import VueRouter from 'vue-router'
 import Resource from 'vue-resource'
 import myRouter from './routers'
+import Bus from './bus.js'
 Vue.use(Resource);
 // 设置默认请求地址
 Vue.http.options.root = 'http://104.238.140.37:9000';
@@ -12,6 +13,7 @@ Vue.use(VueRouter)
 let intercept = 0;
 Vue.http.interceptors.push((request, next) => {
   intercept++
+  Bus.$emit('loading',true);
   // modify request ...
     // console.log(intercept)
 
@@ -21,8 +23,8 @@ Vue.http.interceptors.push((request, next) => {
     intercept--
     // console.log(response)
     if(intercept == 0){
-      
-    }
+        Bus.$emit('loading',false);
+      }
   })
 });
 

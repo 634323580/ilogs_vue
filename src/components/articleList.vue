@@ -18,6 +18,7 @@
 <script>
 import Request from '../request.js'
 import Moment from 'moment'
+import Bus from '../bus.js'
 export default {
   props:['mag'],
   data(){
@@ -70,6 +71,11 @@ export default {
     // this.mag.create_at = Moment([time.getFullYear(), time.getMonth()+1, time.getDate()]).fromNow()
 
 
+  },
+  mounted:function(){
+    // Bus.$on('loading', text => {
+    //   console.log(text)
+    // })
   },
   methods:{
 

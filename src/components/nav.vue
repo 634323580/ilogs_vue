@@ -8,7 +8,7 @@
     </div>
     <div class="nav-user">
         <a @click="render($event)"><i class="iconfont">&#xe74b;</i>显示模式</a>
-        <a><i class="iconfont">&#xe607;</i>登录</a>
+        <a href="http://admin.ilogs.me/#/signin"><i class="iconfont">&#xe607;</i>登录</a>
     </div>
 <div id="view-mode-modal" class="read-modal" v-show='display' @click='eventpreventDefault($event)'>
     <div class="btn-group change-background dayNight">

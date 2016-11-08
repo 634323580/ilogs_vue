@@ -28,7 +28,6 @@
     import Asides from './aside'
     import Request from '../request.js'   
     import Moment from 'moment'
-   // import Jquery from 'jquery'
     export default {
         data(){
             return {
@@ -38,12 +37,10 @@
         created:function(){
             this.$nextTick(function(){
                 Request.get(this,'post/'+this.$route.params.articleId).then(res => {
-                    console.log(res.body.data)
                     this.articleCon = res.body.data;
                     let re = /\//g;
                     this.articleCon.create_at = Moment(new Date(this.articleCon.create_at)).format('L,LT');
 
-                    console.log(Moment(new Date(this.articleCon.create_at)).format("YYYY, h:mm:ss a")) 
                 })
             })
 
