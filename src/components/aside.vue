@@ -1,6 +1,6 @@
 <template>
   <div class="left-aside">
-    <div class="cover-img" style=" background-image: url(http://upload.jianshu.io/daily_images/images/UevpbWNMJXzWoxcZLhmZ.jpg);"></div>
+    <div class="cover-img" v-bind:style="{backgroundImage:imgUrl}"></div>
     <div class="bottom-block">
       <h1>简书</h1>
       <h3>交流故事，沟通想法</h3>
@@ -12,6 +12,18 @@
 
 <script>
 export default {
+  data(){
+    return {
+      imgArr:[
+      'http://upload.jianshu.io/daily_images/images/R94qYyxsSyYsX5xz6h7q.jpg',
+      'http://upload.jianshu.io/daily_images/images/UevpbWNMJXzWoxcZLhmZ.jpg',
+      ],
+      imgUrl:''
+    }
+  },
+  created:function(){
+   this.imgUrl = 'url('+this.imgArr[Math.floor(Math.random()*this.imgArr.length)]+')';
+  }
 }
 </script>
 
