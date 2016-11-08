@@ -27,6 +27,7 @@
     import Navbar from './nav'
     import Asides from './aside'
     import Request from '../request.js'   
+    import Moment from 'moment'
    // import Jquery from 'jquery'
     export default {
         data(){
@@ -40,7 +41,9 @@
                     console.log(res.body.data)
                     this.articleCon = res.body.data;
                     let re = /\//g;
-                    this.articleCon.create_at = new Date(this.articleCon.create_at).toLocaleString().replace(re, '.');
+                    this.articleCon.create_at = Moment(new Date(this.articleCon.create_at)).format('L,LT');
+
+                    console.log(Moment(new Date(this.articleCon.create_at)).format("YYYY, h:mm:ss a")) 
                 })
             })
 
@@ -57,7 +60,7 @@
     .articleCon{
         width:620px;
         margin:0 auto;
-        padding: 80px 40px 10px;
+        padding: 80px 40px 20px;
         .author-info {
             padding-bottom: 15px;
             margin-bottom: 30px;
@@ -102,8 +105,12 @@
                 font-weight: bold;
                 line-height: 1.5;
                 font-family: Georgia, "Times New Roman", Times, "Kai", "Kaiti SC", "KaiTi", "BiauKai", "楷体", "楷体_GB2312", serif;
-                color:#999;
+                color:#2a2a2a;
+                margin-bottom:15px;
             }
         
+    }
+    #app.readerNightMode{
+        .articleCon .title{color:#e8e8e8;}
     }
 </style>

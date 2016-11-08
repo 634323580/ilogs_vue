@@ -19,7 +19,7 @@ Vue.http.interceptors.push((request, next) => {
   next(response => {
     response.sb = '111'
     intercept--
-    // console.log(intercept)
+    // console.log(response)
     if(intercept == 0){
       
     }

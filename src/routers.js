@@ -37,7 +37,7 @@ import Home from './components/home.vue'
 import Error404 from './components/404.vue'
 import Article from './components/articleList.vue'
 import ArticleContent from './components/articleContent.vue'
-import Category from './components/category.vue'
+import Category from './components/categoryContent.vue'
 var router = new VueRouter({
   routes: [
     {
@@ -50,33 +50,17 @@ var router = new VueRouter({
        name:'home',
        component: Home,
        children: [
-        {
-          // 当 /user/:id/profile 匹配成功，
-          // UserProfile 会被渲染在 User 的 <router-view> 中
-          path: 'profile',
-          component: Error404
-        },
+         // 当 /user/:id/profile 匹配成功，
+         // UserProfile 会被渲染在 User 的 <router-view> 中
+          {path: 'profile',component: Error404},
+          {path: '/',component : Category},
+          {path: 'all',component: Category },
+          {path: 'category/:categoryId',name:'category',component:Category},
        ]
     },
-    {
-      path: '/articlecon/:articleId',
-      name:'listcon',
-      component:ArticleContent
-    },
-    {
-      path: '/category/:categoryId',
-      name:'category',
-      component:Category
-    },
-    {
-       path: '/*', 
-       component: Error404 
-    },
-    {
-      path: '/',
-      redirect: '/home'
-    }
-    
+    {path: '/articlecon/:articleId',name:'listcon',component:ArticleContent},
+    {path: '/*', component: Error404 },
+    {path: '/',redirect: '/home'} 
   ]
 })
 
