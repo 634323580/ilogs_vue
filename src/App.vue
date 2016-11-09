@@ -94,9 +94,9 @@ a{
   width:100%;
   min-height:100%;
   &.readerFont{
-    font: 14px/1.4286 '黑体';
+    font-family: -apple-system, "Helvetica Neue", Arial, "PingFang SC", "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
     .bottom-block{
-      font-family:'黑体';
+      font-family: -apple-system, "Helvetica Neue", Arial, "PingFang SC", "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
     }
   }
 }

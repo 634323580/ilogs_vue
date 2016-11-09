@@ -17,6 +17,7 @@ export default {
       imgArr:[
       'http://upload.jianshu.io/daily_images/images/R94qYyxsSyYsX5xz6h7q.jpg',
       'http://upload.jianshu.io/daily_images/images/UevpbWNMJXzWoxcZLhmZ.jpg',
+      'http://upload.jianshu.io/daily_images/images/rMHywSacwCqU1ioxg6JF.jpg'
       ],
       imgUrl:''
     }

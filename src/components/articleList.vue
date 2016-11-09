@@ -26,7 +26,7 @@ export default {
       items:[],
     }
   },
-  created:function(){
+  mounted:function(){
     // this.$http.get('post',{
     //   params:{
     //     limit:10
@@ -72,11 +72,11 @@ export default {
 
 
   },
-  mounted:function(){
-    // Bus.$on('loading', text => {
-    //   console.log(text)
-    // })
-  },
+  // mounted:function(){
+  //   // Bus.$on('loading', text => {
+  //   //   console.log(text)
+  //   // })
+  // },
   methods:{
 
   },
