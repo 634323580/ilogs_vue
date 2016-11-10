@@ -67,6 +67,7 @@ export default {
     //this.mag.create_at = new Date(this.mag.create_at).toLocaleString().replace(re, '.')
     // let times = Moment(Date.parse(new Date(this.mag.create_at)) / 1000, "YYYYMMDD").fromNow()
     let time = new Date(this.mag.create_at)
+    console.log(this.mag.create_at)
     this.mag.create_at = Moment((new Date(this.mag.create_at))).fromNow('MMMM Do YYYY, h:mm:ss a') + '前'
     // this.mag.create_at = Moment([time.getFullYear(), time.getMonth()+1, time.getDate()]).fromNow()
 
