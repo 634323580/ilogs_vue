@@ -59,6 +59,7 @@ export default {
 }
 li{
   list-style:none;
+  display: block !important;
 }
 a{
   text-decoration: none;
