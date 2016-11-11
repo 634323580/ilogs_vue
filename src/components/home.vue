@@ -37,26 +37,7 @@ export default {
   created:function(){
   },
   mounted:function(){
-   this.$nextTick(function(){
-    Request.get(this,'post').then(res => {
-      this.items = res.body.data;
-    })
-    this.$refs.searchComponent.$on('search',text => {
-      if(Boolean(text)){
-        Request.get(this,'post',{
-          'title':text
-        }).then(res => {
-          this.items = res.body.data;
-        })
-      }else{
-        Request.get(this,'post').then(res => {
-          this.items = res.body.data;
-        })
-      }
-      
-    })
 
-  })
   },
   methods:{
     incrementTotal:function(){

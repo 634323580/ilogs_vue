@@ -16,22 +16,13 @@
         data(){
             return {
                 items:[],
-                searchVal:''
+                searchVal:null
             }
         },
         created:function(){
             Bus.$on('search',text => {
                 this.searchVal = text;
-                if(Boolean(text)){
-                    Request.get(this,'post',{
-                        category:this.$route.params.categoryId,
-                        title:text
-                    }).then(res => {
-                        this.items = res.body.data;
-                    })
-                }else{
-                    this.requestList();
-                }
+                this.requestList();
             })
         },
         mounted:function(){
@@ -40,22 +31,11 @@
             // console.log(this.$route.params.categoryId)
         },
         methods:{
-            requestList:function(){
-                if(Boolean(this.searchVal)){
-                    Request.get(this,'post',{
-                        title:this.searchVal,
-                        category:this.$route.params.categoryId
-                    }).then(res => {
+            requestList:function(obj = {category:this.$route.params.categoryId,title:this.searchVal}){
+                    if (obj.title == null){delete obj.title};
+                    Request.get(this,'post',obj).then(res => {
                         this.items = res.body.data;
                     })
-                }else{
-                    Request.get(this,'post',{
-                        category:this.$route.params.categoryId
-                    }).then(res => {
-                        this.items = res.body.data;
-                    })
-                }
-
             }
         },
         watch:{
