@@ -71,7 +71,7 @@
 </script>
 
 <style lang="scss">
-    @import '../assets/github-markdown.css'; 
+    // @import '../assets/github-markdown.css'; 
     .articleCon{
         width:620px;
         margin:0 auto;
