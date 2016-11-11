@@ -16,13 +16,18 @@
         data(){
             return {
                 items:[],
-                searchVal:null
+                searchVal:null,
+                str:''
             }
         },
         created:function(){
             Bus.$on('search',text => {
+                if(this.str == text) return;
                 this.searchVal = text;
+                this.str = text;
                 this.requestList();
+                
+
             })
         },
         mounted:function(){
@@ -32,7 +37,7 @@
         },
         methods:{
             requestList:function(obj = {category:this.$route.params.categoryId,title:this.searchVal}){
-                    if (obj.title == null){delete obj.title};
+                    if (obj.title == null || obj.title == ''){delete obj.title};
                     Request.get(this,'post',obj).then(res => {
                         this.items = res.body.data;
                     })
