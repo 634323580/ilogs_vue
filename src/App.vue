@@ -59,7 +59,6 @@ export default {
 }
 li{
   list-style:none;
-  display: block !important;
 }
 a{
   text-decoration: none;
@@ -105,8 +104,9 @@ a{
 #app.readerNightMode{
   background:#3f3f3f;
   .markdown-body{color:#999999;}
-  .highlight pre, .markdown-body pre{
-    background:#2a2a2a;
+  .markdown-body{
+    pre{
+    }
   }
   .markdown-body{
     hr{background:#2f2f2f;}
