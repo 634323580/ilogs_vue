@@ -1,6 +1,9 @@
 <template>
     <div class="categotyContent">
-        <Articlelist v-for='item in items' :mag='item'></Articlelist>
+        <ul v-if="items.length">
+            <Articlelist v-for='item in items' :mag='item'></Articlelist>
+        </ul>
+        <div v-else style="margin-top:8px;">当前分类没有笔记</div>
     </div>
 </template>
 
@@ -22,7 +25,7 @@
         },
         created:function(){
             Bus.$on('search',text => {
-                if(this.str == text) return;
+                if(this.str === text) return;
                 this.searchVal = text;
                 this.str = text;
                 this.requestList();

@@ -40,7 +40,7 @@
                     let re = /\//g;
                     this.articleCon.create_at = Moment(new Date(this.articleCon.create_at)).format('L,LT');
                     let testEditormdView;
-                    setTimeout(() => {
+                    this.$nextTick(() => {
                         testEditormdView = editormd.markdownToHTML("test-editormd-view", {
                             markdown        : this.articleCon.md ,//+ "\r\n" + $("#append-test").text(),
                             //htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启

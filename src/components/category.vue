@@ -1,7 +1,7 @@
 <template>
   <div class="category">
       <ul class="unstyled clearfix sort-nav">
-          <router-link to='/home/all' tag='li' active-class="active"><a>全部</a></router-link>
+          <router-link to='/home/category/all' tag='li' active-class="active"><a>全部</a></router-link>
           <!--<li v-for='item in category' v-on:click='categorys(item,item._id)'><a>{{item.name}}</a></li>-->
           <router-link v-for='item in category' :to="{name:'category',params:{categoryId:item._id }}" active-class="active" tag="li" ><a>{{item.name}}</a></router-link>
           <!--<li><a>时事热闻</a></li>

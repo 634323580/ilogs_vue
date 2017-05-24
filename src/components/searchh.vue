@@ -1,8 +1,8 @@
 <template>
     <div class="page-title">
         <ul class="clearfix">
-            <router-link to="/home" active-class="active" tag="li"><a>发现</a></router-link>
-            <router-link to="/home/profile" active-class="active" tag="li"><a>2015精选发现</a></router-link>
+            <router-link to="/home" active-class="active" tag="li"><a>笔记</a></router-link>
+            <!--<router-link to="/home/profile" active-class="active" tag="li"><a>2015精选发现</a></router-link>-->
             <li class="search">
               <input type="text" placeholder="搜索" v-model='searchVal' @keyup.enter="search">
               <i class="iconfont">&#xe62b;</i>

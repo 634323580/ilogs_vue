@@ -40,11 +40,11 @@ import ArticleContent from './components/articleContent.vue'
 import Category from './components/categoryContent.vue'
 var router = new VueRouter({
   routes: [
-    {
-       path: '/',
-       name:'index',
-       component: Home 
-    },
+    // {
+    //    path: '/',
+    //    name:'index',
+    //    component: Home 
+    // },
     {
        path: '/home',
        name:'home',
@@ -53,14 +53,21 @@ var router = new VueRouter({
          // 当 /user/:id/profile 匹配成功，
          // UserProfile 会被渲染在 User 的 <router-view> 中
           {path: 'profile',component: Error404},
-          {path: '/',component : Category},
-          {path: 'all',component: Category },
+          {path: 'category/all',component: Category },
           {path: 'category/:categoryId',name:'category',component:Category},
-       ]
+          {
+            path: '/',
+            redirect: 'category/all'
+          }
+       ],
     },
     {path: '/articlecon/:articleId',name:'listcon',component:ArticleContent},
-    {path: '/*', component: Error404 },
-    {path: '/',redirect: '/home'} 
+    // {path: '/*', component: Error404 },
+    // 重定向路由
+    {
+      path: '/',
+      redirect: '/home'
+    }
   ]
 })
 

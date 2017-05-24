@@ -3,7 +3,7 @@
 		<div class="dropdown">
 			<router-link to="/home"><i class="iconfont">&#xe622;</i>首页</router-link>
 			<!-- <router-link to="/articlecon"><i class="iconfont">&#xe634;</i>专题</router-link> -->
-			<a><i class="iconfont">&#xe634;</i>专题</a>
+			<!--<a><i class="iconfont">&#xe634;</i>专题</a>-->
 			</ul>
 		</div>
 		<div class="nav-user">
@@ -19,10 +19,10 @@
 				<span @click='font(true,false,false)' v-bind:class='{active :arial }'>宋体</span>
 				<span @click='font(false,true,true)' v-bind:class='{active :blackbody }'>黑体</span>
 			</div>
-			<div class="btn-group change-background">
+			<!--<div class="btn-group change-background">
 				<span class="active">简体</span>
 				<span>繁体</span>
-			</div>
+			</div>-->
 		</div>
 	</div>
 
@@ -36,13 +36,14 @@ export default{
     data(){
         return {
             display:false,
-            day_sw:Store.storeGet('day_sw'),
+            day_sw:Store.storeGet('day_sw') != false,
             night_sw:Store.storeGet('night_sw'),
-            arial:Store.storeGet('arial'),
+            arial:Store.storeGet('arial') != false,
             blackbody:Store.storeGet('blackbody')
         }
     },
     created:function(){
+		console.log(this.arial == null)
         Bus.$on('event:nightdaySw',text =>{
             this.display = text;
         })

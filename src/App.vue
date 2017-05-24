@@ -103,7 +103,7 @@ a{
 
 #app.readerNightMode{
   background:#3f3f3f;
-  .markdown-body{color:#999999;}
+  .markdown-body{color:#999999; opacity: .7;}
   .markdown-body{
     pre{
     }

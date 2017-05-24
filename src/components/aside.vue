@@ -2,8 +2,8 @@
   <div class="left-aside">
     <div class="cover-img" v-bind:style="{backgroundImage:imgUrl}"></div>
     <div class="bottom-block">
-      <h1>简书</h1>
-      <h3>交流故事，沟通想法</h3>
+      <h1>ilogs</h1>
+      <h3>vue2.0制作简陋个人博客</h3>
       <p>一个基于内容分享的社区</p>
       <a class="btn btn btn-large btn-success"><i class="iconfont">&#xe691;</i>提笔写篇文章</a>
     </div>
